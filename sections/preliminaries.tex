@@ -1,0 +1,41 @@
+\textit{This chapter describes the main concepts used along of this work.}
+
+\section{RDF graph} 
+An RDF graph is a set of RDF triples which has a set of subjects and objects of triples in the graph called nodes.
+Given an infinite set $U$ of URIs, an infinite set $B$ of blank nodes and an infinite set of literals $L$, a RDF triple is a triple $\langle s, p, o \rangle$ where the subject $s \in (U \cup B)$, the predicate $p \in U$ and the object $o \in (U \cup B \cup L)$. An RDF triple represents an assertion of a ``piece of knowledge'', so if the triple $\langle s, p, o \rangle$ exists, then,  the logical assertion $p(s,o)$ holds true.
+An RDF graph is also represented by a collection of RDF triples and it can be seen as a set of statements describing, partially or completely, a certain knowledge.
+
+\section{Transitive property} 
+A transitive property is defined by: $\forall a,b,c \in X: (p(a,b) \wedge p(b,c)) \implies p(a,c)$, where $p$ represents a relation between two elements of a set $X$.
+
+%\item[\textbf{Antisymmetric property.}] Defined by $\forall a,b \in X:(aRb \wedge bRa) \implies a=b$, where $R$ represents a relation between two elements of a set $X$. \todo{TS: Do we still need this?}
+
+\section{Equivalence} 
+An equivalence relation is a binary relation that is reflexive, symmetric and transitive. According to OWL semantics, \texttt{owl:sameAs} is an equivalence relation.
+
+\section{Linkset}
+According to the W3C,\footnote{Linkset definition: \url{https://www.w3.org/TR/void/\#linkset}} a linkset is a collection of RDF links between two datasets. It is a set of RDF triples in which all subjects are in one dataset and all objects are in another dataset. RDF links often have the \texttt{owl:sameAs} predicate, but any other property could occur as the predicate as well.
+Formally, according to~\cite{alexander2009describing}, a linkset $LS$ is a set of $RDF$ triples where for all triples $t_i =  \langle s_i, p_i, o_i \rangle \in LS$,  the subject is in one dataset,  i.e. all $s_i$ are described in $S$, and the object is in another dataset, i.e. all $o_i$ are described in $T$, where $S$ and $T$ are datasets.
+We use the word \emph{linkset} for either RDF knowledge base files and dump files from RDF link repositories.
+
+\section{RDF graph partitioning}
+Given a graph $G=(V,E, lbl, L)$, a graph partitioning, C, is a division of $V$ into $k$ partitions ${P_1,P_2,...,P_k}$ such that $\bigcup\limits_{1 \leq i \leq k}P_i=V$, and $P_i \cap P_j = \emptyset$ for any $i \neq j$. The edge cut $E_c$ is the set of edges whose vertices belong to different partitions, $lbl : E \cup V \rightarrow L$ is a labeling function, and $L$ is a set of labels. 
+
+The definition comes from a recent survey about RDF graph partitioning~\cite{tomaszuk2015rdf}.
+
+\section{Basic Graph Pattern}
+A Basic Graph Pattern (BGP)\footnote{Basic Graph Pattern definition:  \url{https://www.w3.org/TR/rdf-sparql-query/\#BasicGraphPatterns}} is represented by a set of Triple Patterns\cite{fletcher2008algebra}.
+
+\section{RDF Dataset}
+An RDF dataset is a set:
+
+${ G, (<u_1>, G_1), (<u_2>, G2), . . . (<u_n>, G_n) }$
+
+where G and each $G_i$ are graphs, and each <$u_i$> is an IRI. Each <$u_i$> is distinct. $G$ is called the default graph. (<$u_i$>, $G_i$) are called named graphs.
+
+\section{SPARQL} 
+\ac{SPARQL} is the language to query RDF datasets, in which the formal definition of a SPARQL Query is:
+A SPARQL Abstract Query is a tuple $(E, D, R)$ where $E$ is a SPARQL algebra expression, $D$ is an RDF Dataset and $R$ is a query form.
+
+\section{Federated Queries} 
+Federated Queries have the aim to collect information from more than one datasets is of central importance for many semantic web and linked data applications~\cite{saleem2013fostering,bigtcga2014}. One of the key step in federated query processing is the \emph{source selection}. The goal of the source selection is to find relevant sources (i.e., datasets) for the given user query.

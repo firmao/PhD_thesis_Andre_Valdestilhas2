@@ -1,0 +1,63 @@
+%*******************************************************
+% Titlepage
+%*******************************************************
+
+\renewcommand{\today}{\ifnum\number\day<10 0\fi \number\day.\space%
+\ifcase \month \or Januar \or Februar \or Marz \or April \or Mai %
+\or Juni \or Juli \or August \or September \or Oktober \or November \or Dezember \fi %
+\number \year}
+
+\begin{titlepage}
+	% if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
+	%\begin{addmargin}[-1cm]{-3cm}
+    \begin{center}
+        \large
+
+        \hfill
+
+        \vfill
+
+        \begingroup
+            \color{Maroon}\LARGE{\spacedallcaps{\myTitle}} \\ \bigskip
+        \endgroup
+
+        %\includegraphics[width=6cm]{figures/University_of_Leipzig.png} \\ \medskip % not allowed to use the Leipzig University logo
+
+        Der Fakult\"at f\"ur Mathematik und Informatik\\
+        der Universit\"at Leipzig\\
+        eingereichte\\ \vfill
+
+        {\Huge DISSERTATION} \vfill\medskip
+
+        zur Erlangung des akademischen Grades \\\vfill
+
+        {\LARGE Doctor rerum naturalium}\\
+        (Dr. rer. nat.)\\\vfill
+
+        im Fachgebiet Informatik vorgelegt von\\\vfill
+
+        \textbf{\myName, Diplom-Informatiker} \\\vfill
+
+        geboren am 14.02.1980 in in Sao Bernardo do Campo - Sao Paulo, Brazil \\\vfill
+
+        Leipzig, den \the\day.\the\month.\the\year \vfill
+
+
+
+
+
+        %\mySubtitle \\ \medskip
+
+%        \myDepartment \\
+%        \myFaculty \\
+%        \myUni \\ \bigskip
+%
+%        \todo{Pflichtexemplare: revise according to attachment 3 in the PrÃ¼fungsordnung (Annahme der Dissertation wurde empfohlen von: 1 ... 2 ..., die Verleihung des akademischen Grades erfolgt mit Bestehen der Verteidigung am ... mit dem GesamtprÃ¤dikat ...}
+%
+%        \myTime\ -- \myVersion
+%
+%        \vfill
+
+    \end{center}
+  %\end{addmargin}
+\end{titlepage}

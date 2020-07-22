@@ -1,0 +1,67 @@
+\tableofcontents
+\newpage
+\begingroup 
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+    \let\cleardoublepage\relax
+    %*******************************************************
+    % List of Todos
+    %*******************************************************    
+    %\phantomsection 
+    %\refstepcounter{dummy}
+    %\addcontentsline{toc}{chapter}{\listfigurename}
+    %\pdfbookmark[1]{\listoftodos}{lof}
+    %\listoftodos
+
+    %\vspace*{8ex}
+    
+    %*******************************************************
+    % List of Figures
+    %*******************************************************    
+    %\addcontentsline{toc}{chapter}*{List of Figures}
+    %\pdfbookmark[1]{\listfigurename}{lof}
+    \listoffigures
+    \vspace*{8ex}
+
+    %*******************************************************
+    % List of Tables
+    %*******************************************************
+    \newpage
+    %\addcontentsline{toc}{chapter}{List of Tables}
+    %\pdfbookmark[1]{\listtablename}{lot}
+    \listoftables
+    \vspace*{8ex}
+    
+    %----------------------------------------------------------------------------------------
+	%	List of Algorithms
+	%----------------------------------------------------------------------------------------
+% \newpage
+% 	\refstepcounter{dummy}
+% 	\let\oldnumberline\numberline
+% 	\renewcommand{\numberline}{Algorithm~\oldnumberline}
+% 	\pdfbookmark[1]{List of Algorithms}{loa} % Bookmark name visible in a PDF viewer
+% 	\listofalgorithms
+% 	\vspace*{8ex}
+
+\newpage
+\chapter*{List of Algorithms}
+Algorithm \ref{alg:indexCreation} Creation of the LOD dataset relation index . . . . . . . \pageref{alg:indexCreation}\\
+Algorithm \ref{alg:dupchunk} Identifying duplicates and chunk . . . . . . . . . . . . . . \pageref{alg:dupchunk}\\
+Algorithm \ref{alg:mfkc} MFKC Similarity Joins . . . . . . . . . . . . . . . . . . . . . . \pageref{alg:mfkc}\\
+Algorithm \ref{alg:err} Consistency Error Detection Algorithm (CEDAL) . . . \pageref{alg:err}\\
+Algorithm \ref{alg:iss1} The WimuQ source selection . . . . . . . . . . . . . . . . . . \pageref{alg:iss1}\\
+Algorithm \ref{alg:sparqlAlot} Query execution on LOD-a-lot . . . . . . . . . . . . . . . . . \pageref{alg:sparqlAlot}
+
+\newpage
+\vspace{8ex}
+
+    %*******************************************************
+    % Acronyms
+    %*******************************************************
+    %\phantomsection
+    %\pdfbookmark[1]{Acronyms}{acronyms}  % Bookmark name visible in a PDF viewer
+    \markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
+    \chapter*{Acronyms}
+\input{sections/Acronym.tex}
+
+\endgroup

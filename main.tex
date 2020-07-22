@@ -1,0 +1,193 @@
+\documentclass[ oneside,openright,titlepage,numbers=noenddot,headinclude,%1headlines,% letterpaper a4paper
+                footinclude=true,cleardoublepage=empty,abstractoff, % <--- obsolete, remove (todo)
+                BCOR=5mm,paper=a4,fontsize=11pt,%11pt,a4paper,%
+                 ngerman,american,%
+                ]{scrreprt}
+                
+%\documentclass[a4paper,twoside,abstracton,12pt,BCOR=15mm]{scrreprt}
+
+%********************************************************************
+% Note: Make all your adjustments in here
+%*******************************************************
+\input{classicthesis-config}
+
+%\usepackage[automark,headsepline]{scrpage2}
+%\usepackage{blindtext}
+%\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+%\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+%\usepackage{amsmath,amssymb}
+%\usepackage{amsthm}
+%\usepackage{verbatim}
+%\usepackage{color,graphicx}
+%\usepackage{microtype}
+\usepackage{import}
+
+\usepackage{qname}
+\setprefix{owl}{http://www.w3.org/2002/07/owl\#}
+\setprefix{dbpedia}{http://dbpedia.org/resource/}
+
+%\newcommand{\xmark}{\ding{55}}%
+
+\newcommand{\E}{{\mathcal{E}}}
+\newcommand{\F}{{\mathcal{F}}}
+\newcommand{\ds}{{\ensuremath{D_s}}}
+\newcommand{\dt}{{\ensuremath{D_t}}}
+
+\newcommand{\func}[2]{\textnormal{#1}(#2)}
+\newcommand{\f}[1]{\func{f}{#1}}
+\newcommand{\h}[1]{\func{h}{#1}}
+
+\DeclareRobustCommand{\hr3}{{$\mathcal{HR}^3$}}
+
+\usepackage{url}
+\usepackage{todonotes}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\usepackage{aurl}
+\usepackage{upgreek}
+\usepackage{subfigure}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+%\usepackage[ruled,vlined]{algorithm2e}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{hyperref}
+\usepackage{cleveref} 
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.85]{beramono}
+\usepackage{listings}
+\usepackage{filecontents}
+\lstset{language=SQL,morekeywords={PREFIX,java,rdf,rdfs,url}}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{patterns}
+
+\usetikzlibrary{graphs}
+
+\usepackage{makeidx}
+\makeindex
+
+\pagestyle{scrheadings}
+\automark[section]{chapter}
+
+% avoid placing figures/screenshots on a page by itself with no text
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+
+\begin{document}
+\sloppy
+\selectlanguage{american}
+
+\renewcommand{\thepage}{\Roman{page}}
+
+\include{sections/titlePage}
+
+\include{sections/titleBack}
+
+
+% main content goes here
+\newpage
+\chapter*{Abstract}
+\import{sections/}{Abstract.tex}
+
+\newpage
+\chapter*{Publications}
+\import{sections/}{publications.tex}
+
+\newpage
+\chapter*{ACKNOWLEDGMENTS}
+\import{sections/}{ACKNOWLEDGMENTS.tex}
+
+\include{sections/contents}
+
+\newpage
+\chapter{Introduction and Motivation}
+
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+
+\import{sections/}{Introduction.tex}
+
+\newpage
+%\chapter{Basic Concepts and Notation} \label{ch:preliminaries}
+\chapter{Preliminaries} \label{ch:preliminaries}
+\import{sections/}{preliminaries.tex}
+
+\newpage
+\chapter{State of the Art} \label{ch:soa}
+\import{sections/}{soa.tex}
+
+\newpage
+\chapter{Relation Among Large Amount of RDF Sources} \label{ch:relating}
+\textit{This chapter is a merge of 3 publications, in which are three steps to find relations among a large amount of RDF sources, starting by identifying datasets, then find relationships among those RDF sources using String Similarity.}
+\section{Identifying Datasets in Large Heterogeneous RDF sources} \label{ch:wimu}
+\import{sections/}{wimu.tex}
+
+\newpage
+\section{Relating RDF sources} \label{ch:lodindex}
+\import{sections/}{LodIndex.tex}
+
+\newpage
+\section{Relating Similar Resources using String Similarity} \label{ch:mfkc}
+\import{sections/}{MFKC.tex}
+
+\newpage
+\chapter{Consistency in Large Amount of RDF sources} \label{ch:consistency}
+\textit{This chapter aims to merge 2 publications, starting by tackling heterogeneity in DBpedia identifiers, followed by an approach to find erroneous links in a large amount of RDF sources.}
+\section{Consistency in Heterogeneous DBpedia Identifiers} \label{ch:dbpediasameas}
+\import{sections/}{DBpediaSameAs.tex}
+
+\newpage
+\section{Consistency in Large-Scale RDF sources: Detection of Erroneous Links} \label{ch:cedal}
+\import{sections/}{CEDAL.tex}
+
+\newpage
+\chapter{Querying Large Amount of Heterogeneous RDF Datasets} \label{ch:wimuq}
+\import{sections/}{wimuq.tex}
+
+\newpage
+\chapter{Conclusion and Future Work} \label{ch:conclusion}
+\import{sections/}{Conclusion.tex}
+
+\newpage
+\chapter{Applications} \label{ap:cedalescola}
+\import{sections/}{Applications.tex}
+
+% \appendix
+
+% \newpage
+% \chapter{Appendix} \label{ap:cedalescola}
+% \import{sections/}{Applications.tex}
+
+\newpage
+\chapter{CV} \label{ch:cv}
+\import{sections/}{CV.tex}
+
+%\chapter{Expose} \label{ch:expose}
+%\import{sections/}{Expose.tex}
+\newpage
+\bibliographystyle{alpha}
+\bibliography{aksw,personal}
+
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{SELBSTÄNDIGKEITSERKLÄRUNG}\chapter*{SELBSTÄNDIGKEITSERKLÄRUNG}
+
+Hiermit erkläre ich, die vorliegende Dissertation selbständig und ohne unzulässige fremde Hilfe angefertigt zu haben. Ich habe keine anderen als die angeführten Quellen und Hilfsmittel benutzt und sämtliche Textstellen, die wörtlich oder sin- ngemäß aus veröffentlichten oder unveröffentlichten Schriften entnommen wurden, und alle Angaben, die auf mündlichen Auskünften beruhen, als solche kenntlich gemacht. Ebenfalls sind alle von anderen Personen bereitgestellten Materialen oder erbrachten Dienstleistungen als solche gekennzeichnet.
+
+\vspace{20pt}\noindent
+Leipzig, den \the\day.\the\month.\the\year
+
+\vspace{80pt}\noindent
+........................................\\
+Andre Valdestilhas
+
+\end{document}

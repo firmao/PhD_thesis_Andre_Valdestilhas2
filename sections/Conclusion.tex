@@ -1,0 +1,56 @@
+In this chapter we summarize our research work, highlight our core contributions and give general conclusions and future directions.
+
+\section{Identifying Datasets in Large Heterogeneous RDF Sources}
+To answer the research question RQ1, based on the evaluation \ref{ev:wimu} we provide a database index of URIs and their respective datasets built upon large Linked Data hubs such as LODStats and LOD Laundromat.
+In order to make this data available and easy to use, we developed a semantic web service.
+For a given URI, it is possible to know the dataset the URI likely was defined in using a heuristic based on the number of literals. 
+We showed two use-cases and carried out a preliminary evaluation to facilitate the understanding of our work.
+%As future work, we will include dump files from LODStats in our database index.
+As future work, we will integrate the service into the version 2.0 of the LinkLion repository, so as to perform linkset quality assurance with the application of link discovery algorithms on the stored links.
+
+\section{Relating Large Amount of RDF Datasets}
+To answer the research question RQ2, based on the evaluation \ref{ev:relod} we present a method to create a repository to store the similarity between a large number of datasets involving the detection of duplicated datasets and dataset chunks.
+
+The method involves the creation of an index over a total of 668,166 datasets from LOD Stats and LOD Laundromat as well as 559 active SPARQL endpoints, representing a total of 221.7 billion triples from more than 5 terabytes of information from datasets partially retrieved using the service ``Where is My URI'' (WIMU). 
+
+For the first time, to the best of our knowledge, we make a relation index that can query by dataset URI, property, class, or SPARQL query.
+
+Our experiments show that more than 90\% of datasets from LODLaundromat datasets are not using owl:equivalentProperty and owl:equivalentClass or another way to relate the data, reinforcing the need for an index of relations among LOD datasets.
+
+We realize that the Datasets still not sharing the expected properties, and the ontologies are not aligned, making hard the task to query multiple heterogeneous datasets.
+We believe that this work can help people to identify similar datasets among a large number of datasets.
+As future work, the next step is to improve the GUI drawing a weighted graph that shows the similarity level of each dataset.
+The source-code is available online\footnote{Link to the GitHub repository:  \url{https://github.com/firmao/LODDatasetRelationsWeb}}.
+
+\section{Obtaining Similar Resources Using String Similarity}
+To answer the research question RQ3, based on the evaluation \ref{ev:mfkc} we presented an approach to reduce the computation runtime of similarity joins using the Most Frequent $k$ Characters algorithm with a sequence of filters that allow discarding pairs before computing their actual similarity, thus reducing the runtime of computation.
+We proved that our approach is both correct and complete. 
+The evaluation shows that all filter setup outperform the naive approach. Our parallel implementation works better in larger datasets with size greater than $10^5$ pairs.
+It is also the key to developing systems for Record Linkage and Link Discovery in knowledge bases.
+As future work, we plan to integrate it in link discovery applications for the validation of equivalence links. The source code is free and available online.\footnote{Link to the GitHub repository: \url{https://github.com/firmao/StringSimilarity/}}
+
+\section{Heterogeneity in DBpedia Identifiers}
+To answer the research question RQ4, based on the evaluation \ref{ev:dbpediasameas} an approach was provided to tackle the heterogeneity working with \qname{owl:sameAs} redundancies that were observed during researching co-references between different data sets and providing a unique DBpedia identifier and give the chance to rate the resulting links and make suggestions.
+
+A proof of concept was implemented as a computer web system in order to present and validate our idea and every concept of this work. The source code is available \footnote{Link to the GitHub repository: \url{https://github.com/firmao/DBPediaLinkSameAs.git}}.
+
+Was noticed in our results that there are benefits when a considerable number of \qname{owl:sameAs} redundancies can be avoided. Rating the links allow users to make link suggestions brings more quality to the repository, and the stand alone service on the web allow you to use the DBpediaSameAs also in a command line textual environment and can be used as an off-the-shelf component.
+
+For the future we plan to:
+(1) make a study about the results of link rating. This needs a period of usage of the DBpediaSameAs service in order to gather sufficient results for proper analysis.
+(2) An implementation case with more members of the DBpedia community. A study about how will be the behavior when implement with the DBpedia community.
+
+\section{Detection of Erroneous Links in Large-Scale RDF Datasets}
+In this work, evaluated in \ref{ev:cedal} we answer the RQ5 and we present CEDAL, a new algorithm that allows tracking consistency problems inside linkset repositories. Our approach allows detecting potential causes of errors, for example the linkset, the underlying dataset(s) and the graph path where the problem subsists.
+We showed that our approach scales well. In particular, we reduced the complexity of obtaining clusters by relying on graph partitions, thus decreasing the time complexity from $O(n^2)$ to $O(m \log n)$.
+Our results showed that at least $13\%$ of \texttt{owl:sameAs} links we considered are erroneous, and algorithms LIMES, SILK and DBpedia Extraction Framework have a better consistency index than repositories such as \emph{sameas.org}. % human-curated knowledge bases.
+
+In future work, we will carry out a survey on Linkset quality. To the best of our knowledge, the survey~\cite{zaveri2015quality} is the most complete collection of data quality measures, which, however, misses specific measures for linkset quality, such as ways a linkset can improve dataset quality~\cite{Albertoni:2013:ALQ:2457317.2457327,yaghouti2015metric,casanova2014materialized}.
+Moreover, we will investigate how our graph partition algorithms can improve the performance of SPARQL endpoints by distributing resources among computer clusters, core processors, and GPUs.
+The CEDAL repository\footnote{Link to the GitHub repository: \url{https://github.com/firmao/CEDAL}} contains all necessary resources to run CEDAL, verify and reproduce our results.
+
+\section{Querying Large Heterogeneous RDF Datasets}
+To answer the research question RQ6, we presented an approach to execute SPARQL queries over a large amount of heterogeneous RDF data sources available from different interfaces and in different formats, evaluated in \ref{ev:wimuq}. We made use of the Wimu service to identify the potentially relevant sources to the qiven SPARQL query. We discussed two main types of federated SPARQL query processing approaches namely the endpoints federation and traversal-based federation. The former type of federation only able to execute federated queries over the data available from SPARQL endpoint. While the later, faces problem of URI's dereferenceability. To overcome these issues we proposed a hybrid (endpoints+link-traversal-based) federation engines which integrates four different types of SPARQL query processing engines. Currently, WimuQ able to execute both federated and non-federated SPARQL queries over a total of 668k datasets available from LOD Stats, LOD Laudromat, and LOD cloud active SPARQL endpoints. We evaluated WimuQ by using three state-of-the-art real-data SPARQL benchmarks. We showed that WimuQ is able to successful execute (with some results) majority of the benchmark queries without any prior knowledge of the data sources. In addition, the WimuQ resultset recall is higher with reasonable query execution times. 
+
+As future, we will add more URIs into the the WIMU index in order to retrieve more complete and fast results. Furthermore, we will add TPF interfaces and query execution engines such Comunica~\cite{taelman2018comunica} and SAGE \cite{DBLP:journals/corr/abs-1806-00227} into the WimuQ query execution engine. We will continue maintaining\footnote{Sustainability plan: \url{https://github.com/firmao/wimuT/wiki/Sustainability-plan}} and developing, extending WimuQ to include the publicly-available triple pattern fragments interfaces as well\footnote{\label{note1}In case of more information is needed we have an extended version of this paper available at \url{http://139.18.13.76:8082/KCAP_extended.pdf}}.
+
